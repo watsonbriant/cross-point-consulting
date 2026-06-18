@@ -1,10 +1,23 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import { Bricolage_Grotesque, Hanken_Grotesk } from "next/font/google";
+import "./ascend.css";
+
+const bricolage = Bricolage_Grotesque({
+  subsets: ["latin"],
+  variable: "--font-disp",
+  weight: ["400", "500", "600", "700"],
+});
+
+const hanken = Hanken_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-body",
+  weight: ["400", "500", "600", "700"],
+});
 
 export const metadata: Metadata = {
-  title: "Cross Point Consulting — Three Website Concepts",
+  title: "Cross Point Consulting — Charlotte, NC",
   description:
-    "Three design directions for Cross Point Consulting — Home, About, Careers, and Contact.",
+    "A Charlotte-based B2B client acquisition team. We build careers from the ground up and promote 100% from within.",
 };
 
 export default function RootLayout({
@@ -13,19 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;1,400&family=Space+Grotesk:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html lang="en" className={`${bricolage.variable} ${hanken.variable}`}>
       <body>{children}</body>
     </html>
   );
