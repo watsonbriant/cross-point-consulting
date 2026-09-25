@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Hanken_Grotesk } from "next/font/google";
+import { Hanken_Grotesk, Schibsted_Grotesk } from "next/font/google";
 import "./ascend.css";
 
-const bricolage = Bricolage_Grotesque({
+const display = Schibsted_Grotesk({
   subsets: ["latin"],
   variable: "--font-disp",
   weight: ["400", "500", "600", "700"],
@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${bricolage.variable} ${hanken.variable}`}>
+    <html lang="en" className={`${display.variable} ${hanken.variable}`}>
       <body>{children}</body>
     </html>
   );

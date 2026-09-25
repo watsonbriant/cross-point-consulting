@@ -222,7 +222,10 @@ export default function AboutPage() {
       <section className="section">
         <div className="wrap split split--rev">
           <div className="split__media">
-            <img src="/assets/photos/coaching.png" alt="Hands-on training" />
+            <img
+              src="/assets/photos/about-table.jpg"
+              alt="Cross Point team in a meeting"
+            />
           </div>
           <div>
             <span className="eyebrow">How we train</span>

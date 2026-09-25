@@ -57,11 +57,13 @@ h1,h2,h3{font-family:var(--disp);font-weight:600;line-height:1.04;letter-spacing
 .nav__burger span{width:24px;height:2px;background:var(--ink);display:block}
 
 /* Hero */
-.hero{padding:72px 0 90px}
+.hero{padding:72px 0 90px;background:var(--ink);color:var(--paper)}
 .hero__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
-.hero h1{font-size:clamp(46px,6.4vw,88px);letter-spacing:-0.03em}
+.hero h1{font-size:clamp(46px,6.4vw,88px);letter-spacing:-0.03em;color:var(--white)}
 .hero h1 .clay{color:var(--clay)}
-.hero__lead{font-size:20px;color:var(--ink-soft);margin:28px 0 36px;max-width:34ch}
+.hero__lead{font-size:20px;color:rgba(255,255,255,.78);margin:28px 0 36px;max-width:34ch}
+.hero .btn--ghost{color:var(--paper);border-color:rgba(255,255,255,.45)}
+.hero .btn--ghost:hover{background:var(--paper);color:var(--ink);border-color:var(--paper)}
 .hero__cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
 .hero__media{position:relative}
 .hero__photo{border-radius:var(--r);overflow:hidden;aspect-ratio:4/3;box-shadow:0 40px 80px -40px rgba(18,16,61,.45)}
@@ -76,9 +78,9 @@ h1,h2,h3{font-family:var(--disp);font-weight:600;line-height:1.04;letter-spacing
 .clients{padding:18px 0 8px}
 .clients__lbl{text-align:center;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:28px}
 .logo-row{display:flex;align-items:center;justify-content:center;gap:50px;flex-wrap:wrap}
-.logo-row img{height:28px;width:auto;filter:grayscale(1);opacity:.55;transition:.3s}
+.logo-row img{height:28px;width:auto;opacity:.75;transition:.3s}
 .logo-row img.tall{height:40px}
-.logo-row img:hover{opacity:1;filter:none}
+.logo-row img:hover{opacity:1}
 
 /* Sections */
 .section{padding:104px 0}
@@ -180,6 +182,16 @@ h1,h2,h3{font-family:var(--disp);font-weight:600;line-height:1.04;letter-spacing
 .field textarea{resize:vertical;min-height:120px}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .form-note{font-size:13px;color:var(--muted);margin-top:8px}
+.field label.file-drop{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;position:relative;min-height:112px;padding:20px;border:1.5px dashed var(--line);border-radius:14px;background:var(--paper);cursor:pointer;text-align:center;font-weight:500}
+.file-drop:hover,.file-drop:focus-within{border-color:var(--clay);background:#fff}
+.field .file-drop input{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;background:transparent;box-shadow:none}
+.file-drop__title{font-size:15px;font-weight:600;color:var(--ink)}
+.file-drop__hint{font-size:13px;color:var(--muted)}
+.sms-consent{margin:0 0 14px;font-size:14px;line-height:1.55;color:var(--ink-soft)}
+.sms-consent a,.field-check a{color:var(--clay-deep);text-decoration:underline}
+.field-check{display:flex;align-items:flex-start;gap:12px;margin-bottom:21px;font-size:14px;line-height:1.55;color:var(--ink-soft)}
+.field-check input{width:auto;margin-top:3px;accent-color:var(--clay);flex:none}
+.form-error{margin-bottom:16px;padding:12px 14px;border-radius:14px;background:#fff1f0;color:#8c221c;font-size:14px;line-height:1.5}
 
 .steps{list-style:none;display:grid;gap:22px;margin-top:24px;padding:0}
 .step{display:flex;gap:18px;align-items:flex-start}
@@ -199,10 +211,11 @@ h1,h2,h3{font-family:var(--disp);font-weight:600;line-height:1.04;letter-spacing
 .footer__bottom{display:flex;justify-content:space-between;padding-top:26px;font-size:13px;color:rgba(255,255,255,.45);flex-wrap:wrap;gap:10px}
 
 /* Page hero */
-.phero{padding:72px 0 56px}
-.phero h1{font-size:clamp(42px,5.6vw,78px);margin-top:14px;letter-spacing:-0.03em}
+.phero{padding:72px 0 56px;background:var(--ink);color:var(--paper)}
+.phero h1{font-size:clamp(42px,5.6vw,78px);margin-top:14px;letter-spacing:-0.03em;color:var(--white)}
 .phero h1 .clay{color:var(--clay)}
-.phero p{font-size:20px;color:var(--ink-soft);margin-top:20px;max-width:56ch}
+.phero p{font-size:20px;color:rgba(255,255,255,.78);margin-top:20px;max-width:56ch}
+.phero .crumb{color:rgba(255,255,255,.55)}
 .crumb{font-size:13px;letter-spacing:.04em;color:var(--muted);text-transform:uppercase;font-weight:600}
 
 .lede{font-family:var(--disp);font-size:clamp(25px,3vw,36px);line-height:1.22;font-weight:600;letter-spacing:-0.02em}

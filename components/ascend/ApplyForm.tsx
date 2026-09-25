@@ -2,15 +2,56 @@
 
 import { FormEvent, useState } from "react";
 
-export function ApplyForm() {
-  const [submitted, setSubmitted] = useState(false);
+const MAKO_COMPANY_NAME = "Elite Precision";
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+type FormStatus = "idle" | "submitting" | "success" | "error";
+
+export function ApplyForm() {
+  const [status, setStatus] = useState<FormStatus>("idle");
+  const [error, setError] = useState("");
+  const [resumeName, setResumeName] = useState("");
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSubmitted(true);
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const resume = data.get("resume");
+
+    if (!(resume instanceof File) || resume.size === 0) {
+      setStatus("error");
+      setError("Please attach your resume (PDF, DOC, or DOCX).");
+      return;
+    }
+
+    data.set("smsOptIn", data.get("smsOptIn") === "on" ? "true" : "false");
+    setStatus("submitting");
+    setError("");
+
+    try {
+      const response = await fetch("/api/apply", {
+        method: "POST",
+        body: data,
+      });
+      const payload = (await response.json()) as { error?: string };
+
+      if (!response.ok) {
+        setStatus("error");
+        setError(payload.error || "Something went wrong. Please try again.");
+        return;
+      }
+
+      setStatus("success");
+      form.reset();
+      setResumeName("");
+    } catch {
+      setStatus("error");
+      setError(
+        "We could not reach the server. Check your connection and try again.",
+      );
+    }
   }
 
-  if (submitted) {
+  if (status === "success") {
     return (
       <div
         id="formOk"
@@ -48,8 +89,8 @@ export function ApplyForm() {
           Application received!
         </h3>
         <p style={{ color: "var(--muted)" }}>
-          Thanks for reaching out. A member of our Charlotte team will be in
-          touch within one business day.
+          Thank you for your application. One of our recruiters will be in
+          touch.
         </p>
       </div>
     );
@@ -60,50 +101,112 @@ export function ApplyForm() {
       <div className="field-row">
         <div className="field">
           <label htmlFor="fn">First name</label>
-          <input id="fn" type="text" required />
+          <input
+            id="fn"
+            name="firstName"
+            type="text"
+            required
+            autoComplete="given-name"
+          />
         </div>
         <div className="field">
           <label htmlFor="ln">Last name</label>
-          <input id="ln" type="text" required />
+          <input
+            id="ln"
+            name="lastName"
+            type="text"
+            required
+            autoComplete="family-name"
+          />
         </div>
       </div>
       <div className="field-row">
         <div className="field">
-          <label htmlFor="em">Email</label>
-          <input id="em" type="email" required />
+          <label htmlFor="ph">Phone</label>
+          <input
+            id="ph"
+            name="phone"
+            type="tel"
+            required
+            autoComplete="tel"
+            inputMode="tel"
+            placeholder="(704) 555-0100"
+          />
         </div>
         <div className="field">
-          <label htmlFor="ph">Phone</label>
-          <input id="ph" type="tel" required />
+          <label htmlFor="em">Email</label>
+          <input
+            id="em"
+            name="email"
+            type="email"
+            required
+            autoComplete="email"
+          />
         </div>
       </div>
       <div className="field">
-        <label htmlFor="role">I&apos;m interested in</label>
-        <select id="role">
-          <option>Entry-level / B2B sales</option>
-          <option>Management track</option>
-          <option>Internship</option>
-          <option>Just learning more</option>
-        </select>
+        <label htmlFor="resume">Attach your resume</label>
+        <label className="file-drop">
+          <input
+            id="resume"
+            name="resume"
+            type="file"
+            required
+            accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            onChange={(event) => {
+              setResumeName(event.target.files?.[0]?.name ?? "");
+            }}
+          />
+          <span className="file-drop__title">
+            {resumeName || "Upload your resume here"}
+          </span>
+          <span className="file-drop__hint">
+            PDF, DOC, or DOCX · Max file size: 100MB
+          </span>
+        </label>
       </div>
       <div className="field">
-        <label htmlFor="msg">Why are you interested? (optional)</label>
-        <textarea
-          id="msg"
-          placeholder="Tell us a little about yourself and what you're looking for."
-        ></textarea>
+        <label htmlFor="msg">Message</label>
+        <textarea id="msg" name="message" />
       </div>
+      <p className="sms-consent">
+        By providing your phone number, you consent to receive text messages
+        from {MAKO_COMPANY_NAME} for purposes related to our service; job
+        opportunities, interview scheduling, and application updates. Message
+        frequency may vary. Message and Data Rates may apply. Reply HELP for
+        help or STOP to unsubscribe. See our{" "}
+        <a
+          href="https://atsmako.com/privacypolicy"
+          target="_blank"
+          rel="noreferrer"
+        >
+          privacy policy
+        </a>
+        .
+      </p>
+      <label className="field-check">
+        <input type="checkbox" name="smsOptIn" required />
+        <span>I agree and opt in</span>
+      </label>
+      {status === "error" && error ? (
+        <div className="form-error" role="alert">
+          {error}
+        </div>
+      ) : null}
       <button
         type="submit"
         className="btn btn--clay"
-        style={{ width: "100%", justifyContent: "center" }}
+        disabled={status === "submitting"}
+        style={{
+          width: "100%",
+          justifyContent: "center",
+          opacity: status === "submitting" ? 0.75 : 1,
+          cursor: status === "submitting" ? "wait" : "pointer",
+        }}
       >
-        Submit application <span className="arr">→</span>
+        {status === "submitting" ? "Sending…" : "Send"}{" "}
+        <span className="arr">→</span>
       </button>
-      <p className="form-note">
-        By submitting you agree to be contacted about career opportunities at
-        Cross Point Consulting.
-      </p>
     </form>
   );
 }

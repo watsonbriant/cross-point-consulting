@@ -31,8 +31,8 @@ export default function HomePage() {
           <div className="hero__media">
             <div className="hero__photo">
               <img
-                src="/assets/photos/hero-presentation.png"
-                alt="Cross Point team in a presentation"
+                src="/assets/photos/hero-desk.jpg"
+                alt="Two Cross Point colleagues working together at a desk"
               />
             </div>
             <div className="hero__chip tl">
@@ -148,8 +148,8 @@ export default function HomePage() {
         <div className="wrap split">
           <div className="split__media">
             <img
-              src="/assets/photos/team-lounge.png"
-              alt="The Cross Point team"
+              src="/assets/photos/team-table.jpg"
+              alt="Cross Point team working around a conference table"
             />
           </div>
           <div>
