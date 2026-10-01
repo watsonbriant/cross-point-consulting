@@ -223,8 +223,8 @@ export default function AboutPage() {
         <div className="wrap split split--rev">
           <div className="split__media">
             <img
-              src="/assets/photos/about-table.jpg"
-              alt="Cross Point team in a meeting"
+              src="/assets/photos/about-coaching.jpg"
+              alt="A Cross Point leader coaching a teammate at the conference table"
             />
           </div>
           <div>

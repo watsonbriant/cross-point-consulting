@@ -37,10 +37,17 @@ export function Footer() {
           <div>
             <h4>Office</h4>
             <ul>
-              <li>Charlotte, North Carolina</li>
-              <li>Mon–Fri · 9am–6pm</li>
+              <li>8520 Cliff Cameron Dr., Suite 160</li>
+              <li>Charlotte, NC 28269</li>
+              <li>Mon–Fri · 8am–5pm</li>
               <li>
-                <Link href="/contact">Get directions</Link>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=8520+Cliff+Cameron+Dr+Suite+160+Charlotte+NC+28269"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Get directions
+                </a>
               </li>
             </ul>
           </div>

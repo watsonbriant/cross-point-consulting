@@ -80,34 +80,12 @@ export default function ContactPage() {
                   color: "var(--ink-soft)",
                 }}
               >
-                Charlotte, North Carolina
+                8520 Cliff Cameron Dr., Suite 160
                 <br />
-                Monday–Friday · 9:00am – 6:00pm
+                Charlotte, NC 28269
+                <br />
+                Monday–Friday · 8:00am – 5:00pm
               </p>
-              <div
-                style={{
-                  marginTop: "20px",
-                  borderRadius: "var(--r)",
-                  overflow: "hidden",
-                  background:
-                    "repeating-linear-gradient(135deg,var(--paper-2),var(--paper-2) 12px,var(--paper-3) 12px,var(--paper-3) 24px)",
-                  height: "200px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  border: "1px solid var(--line)",
-                }}
-              >
-                <span
-                  style={{
-                    fontFamily: "monospace",
-                    fontSize: "13px",
-                    color: "var(--muted)",
-                  }}
-                >
-                  [ map / office photo ]
-                </span>
-              </div>
             </div>
           </div>
         </div>
