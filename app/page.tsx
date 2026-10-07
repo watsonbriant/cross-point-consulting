@@ -31,8 +31,8 @@ export default function HomePage() {
           <div className="hero__media">
             <div className="hero__photo">
               <img
-                src="/assets/photos/hero-desk.jpg"
-                alt="Two Cross Point colleagues working together at a desk"
+                src="/assets/photos/culture-conversation.png"
+                alt="Cross Point team in conversation"
               />
             </div>
             <div className="hero__chip tl">

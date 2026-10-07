@@ -271,8 +271,8 @@ export default function CareersPage() {
           </div>
           <div className="split__media" style={{ aspectRatio: "4/3" }}>
             <img
-              src="/assets/photos/culture-conversation.png"
-              alt="Cross Point team culture"
+              src="/assets/photos/culture-fun.jpg"
+              alt="Cross Point team at a group outing"
             />
           </div>
         </div>
