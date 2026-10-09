@@ -269,7 +269,7 @@ export default function CareersPage() {
               <span className="tag">Recognition nights</span>
             </div>
           </div>
-          <div className="split__media" style={{ aspectRatio: "4/3" }}>
+          <div className="split__media split__media--natural">
             <img
               src="/assets/photos/culture-fun.jpg"
               alt="Cross Point team at a group outing"
